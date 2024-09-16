@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+import ProjectsSection from '../components/ProjectSection.astro';
+import type { Project } from "../types";
+
+const profileData = {
+	name: 'Vincent Duong',
+	github: 'https://github.com/yzsvdu',
+	linkedin: 'https://www.linkedin.com/in/vnnsnnt/',
+	profilePicture: './pfp.png', // Update this path
+	bio: 'Computer Science student at USC. Passionate about software development, reverse engineering, and natural language processing. Interested in learning photoshop, cad modeling and game design.'
+};
+const activeProjects: Project[] = [
+	{
+		title: 'Ascendit',
+		description: 'Indoor Bouldering App designed to track and share climb solutions while gaining points and joining communities.',
+		tech: ['SwiftUI', 'Django', 'SQL', 'Detectron2', 'Celery'],
+		link: 'https://github.com/link-to-project-A',
+		imgUrl: './acendit.png'
+	},
+	{
+		title: 'Modern Chinese Dictionary',
+		description: 'Language Learning Web Application designed to break down Chinese text into definable word segments.',
+		tech: ['Java', 'SpringBoot', 'Django', 'ReactJS', 'TypeScript'],
+		link: 'https://github.com/link-to-project-A',
+		imgUrl: './mcd.png'
+	},
+];
+
+const maintainingProjects: Project[] = [
+	{
+		title: 'Red Trainer',
+		description: 'Java Reflection Tool to automate tasks in the game PokeMMO',
+		tech: ['Java', 'JDGUI', 'Recaf', 'EclipseMAT'],
+		link: 'https://github.com/link-to-maintained-A',
+		imgUrl: './redtrainer.png'
+	},
+];
+
+const archivedProjects: Project[] = [
+	{
+		title: 'Bipedal Revolution',
+		description: 'Two player cooperative platformer with complex movement to progress made in Unity with C#',
+		tech: ['Unity', 'CSharp'],
+		link: 'https://github.com/link-to-project-A',
+		imgUrl: './BipedalRevolutionThumbnail.png'
+	},
+	{
+		title: 'Movie Database T2',
+		description: 'Movie Discovery and Management Web Application designed to improve movie search and collecting experience.',
+		tech: ['Java', 'Springboot', 'ReactJS', 'SQL'],
+		link: 'https://github.com/link-to-project-A',
+		imgUrl: './mdbt2.png'
+	},
+];
+---
+
+<Layout title="Vincent Duong - Profile">
+	<ProfileCard
+		name={profileData.name}
+		github={profileData.github}
+		linkedin={profileData.linkedin}
+		profilePicture={profileData.profilePicture}
+		bio={profileData.bio}
+	/>
+	<ProjectsSection
+		currentProjects={activeProjects}
+		maintainingProjects={maintainingProjects}
+		archivedProjects={archivedProjects}
+	/>
+</Layout>

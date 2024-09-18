@@ -33,14 +33,14 @@ const { project } = Astro.props;
         display: flex;
         align-items: center;
         margin-top: 10px;
-        flex-wrap: wrap; /* Allow wrapping for multiple techs */
+        flex-wrap: wrap;
     }
 
     .tech-item {
         display: flex;
         align-items: center;
-        margin-right: 12px; /* Adds space between tech items */
-        margin-bottom: 8px; /* Adds vertical space between wrapped rows */
+        margin-right: 12px;
+        margin-bottom: 8px;
     }
 
     .tech-dot {
@@ -54,105 +54,69 @@ const { project } = Astro.props;
 
     .tech-used p {
         margin: 0;
-        line-height: 12px; /* Match this with the dot's height */
+        line-height: 12px;
         display: inline-block;
         vertical-align: middle;
     }
 
     /* Technology colors */
-    .tech-unity {
-        background-color: #222C37;
-    }
+    .tech-unity { background-color: #222C37; }
+    .tech-reactjs { background-color: #61DAFB; }
+    .tech-typescript { background-color: #3178C6; }
+    .tech-docker { background-color: #2496ED; }
+    .tech-django { background-color: #092E20; }
+    .tech-swiftui { background-color: #FA7343; }
+    .tech-sql { background-color: #E38C00; }
+    .tech-java { background-color: #007396; }
+    .tech-eclipse { background-color: #2C2255; }
+    .tech-jdgui { background-color: #D4380D; }
+    .tech-recaf { background-color: #23D160; }
+    .tech-springboot { background-color: #6DB33F; }
+    .tech-nginx { background-color: #009639; }
+    .tech-csharp { background-color: #e32b2b; }
+    .tech-eclipsemat { background-color: #5bdcd2; }
+    .tech-detectron2 { background-color: #4be6ea; }
+    .tech-celery { background-color: #85d785; }
 
-    .tech-reactjs {
-        background-color: #61DAFB;
-    }
-
-    .tech-typescript {
-        background-color: #3178C6;
-    }
-
-    .tech-docker {
-        background-color: #2496ED;
-    }
-
-    .tech-django {
-        background-color: #092E20;
-    }
-
-    .tech-swiftui {
-        background-color: #FA7343;
-    }
-
-    .tech-sql {
-        background-color: #E38C00;
-    }
-
-    .tech-java {
-        background-color: #007396;
-    }
-
-    .tech-eclipse {
-        background-color: #2C2255;
-    }
-
-    .tech-jdgui {
-        background-color: #D4380D;
-    }
-
-    .tech-recaf {
-        background-color: #23D160;
-    }
-
-    .tech-springboot {
-        background-color: #6DB33F;
-    }
-
-    .tech-nginx {
-        background-color: #009639;
-    }
-
-    .tech-csharp {
-        background-color: #e32b2b;
-    }
-
-    .tech-eclipsemat {
-        background-color: #5bdcd2;
-    }
-
-    .tech-detectron2 {
-        background-color: #4be6ea;
-    }
-
-    .tech-celery {
-        background-color: #85d785;
-    }
-
-    a:hover, a:visited, a:link, a:active
-    {
+    a:hover, a:visited, a:link, a:active {
         color: black;
         text-decoration: none;
     }
 
     img {
         border-radius: 8px;
+        width: 100%;
     }
 </style>
 
 <div class="project-item">
-    <a href={`/projects/${project.id}`}>
-        <div>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <img src={project.imgUrl} style="width: 100%;" />
-            <div class="tech-used">
-                {project.tech.map((tech: string) => (
-                        <div class="tech-item">
-                            <span class={`tech-dot tech-${tech.toLowerCase()}`}></span>
-                            <p>{tech}</p>
-                        </div>
-                ))}
-            </div>
-        </div>
-    </a>
+    { project.link ? (
+            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <img src={project.imgUrl} />
+                <div class="tech-used">
+                    {project.tech.map((tech: string) => (
+                            <div class="tech-item">
+                                <span class={`tech-dot tech-${tech.toLowerCase()}`}></span>
+                                <p>{tech}</p>
+                            </div>
+                    ))}
+                </div>
+            </a>
+    ) : (
+            <>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <img src={project.imgUrl} />
+                <div class="tech-used">
+                    {project.tech.map((tech: string) => (
+                            <div class="tech-item">
+                                <span class={`tech-dot tech-${tech.toLowerCase()}`}></span>
+                                <p>{tech}</p>
+                            </div>
+                    ))}
+                </div>
+            </>
+    )}
 </div>
